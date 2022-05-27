@@ -89,7 +89,7 @@ class Running extends Workout {
     calcPace() {
         // min/km
         this.pace = this.duration / this.distance;
-        // return this.pace;
+        return this.pace;
     }
 }
 class cycling extends Workout {
@@ -104,7 +104,7 @@ class cycling extends Workout {
     calcSpeed() {
         // Km/h
         this.speed = this.distance / (this.duration / 60);
-        // return this.speed;
+        return this.speed;
     }
 }
 // const run1 = new Running([39, -12], 5.2, 24, 178);
@@ -296,6 +296,9 @@ class App {
         }
     }
     _moveToPopup(e) {
+        // BUGFIX: When we click on a workout before the map has loaded, we get an error. But there is an easy fix:
+        if (!this.#map) return;
+       
         const workoutEl = e.target.closest('.workout');
         // console.log(workoutEl);
         if (!workoutEl) return;
