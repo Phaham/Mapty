@@ -116,7 +116,7 @@ class cycling extends Workout {
 class App {
     #map;
     #mapEvent;
-    #mapZoomllevel = 13;
+    #mapZoomlevel = 13;
     #workouts = [];
 
     constructor() {//it is the constructor which firstly executed as application loads
@@ -149,7 +149,7 @@ class App {
         // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
         const coords = [latitude, longitude];
-        this.#map = L.map('map').setView(coords, this.#mapZoomllevel);//second parameter is for zoom of map when it first appears
+        this.#map = L.map('map').setView(coords, this.#mapZoomlevel);//second parameter is for zoom of map when it first appears
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {// => fr/hot -> shows different theme of tiles of map(map is made of tiles)
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -179,7 +179,7 @@ class App {
         // hide the form
         form.style.display = 'none';
         form.classList.add('hidden');
-        setTimeout(() => form.style.display = 'grid', 1000);
+        setTimeout(() => (form.style.display = 'grid'), 1000);
     }
     _toggleElevationField() {
         inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
@@ -307,7 +307,7 @@ class App {
         const workout = this.#workouts.find(work => work.id === workoutEl.dataset.id);
 
         // setView -> leaflet property
-        this.#map.setView(workout.coords, this.#mapZoomllevel, {//In 3rd argument we can pass object of options
+        this.#map.setView(workout.coords, this.#mapZoomlevel, {//In 3rd argument we can pass object of options
             animate: true,
             pan: {
                 duration: 1,
